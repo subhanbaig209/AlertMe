@@ -1,94 +1,37 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, FlatList, SafeAreaView } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Feed from './screen/feed';
+import Map from './screen/map';
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  const [incidentList, setIncidentList] = useState([]);
-  const [username, setUsername] = useState('');
-  const [description, setDescription] = useState('');
-  const [location, setLocation] = useState('');
-
-  const handleAddIncident = () => {
-    if (username && description && location) {
-      const newIncident = {
-        id: Math.random().toString(),
-        username: username,
-        description: description,
-        location: location,
-      };
-
-      setIncidentList((prevList) => [...prevList, newIncident]);
-      setUsername('');
-      setDescription('');
-      setLocation('');
-    }
-  };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Feed"
+          component={Feed}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} />
+            ),
+          }}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Description"
-          value={description}
-          onChangeText={(text) => setDescription(text)}
+        <Tab.Screen
+          name="Map"
+          component={Map}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="map" color={color} size={size} />
+            ),
+          }}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Location"
-          value={location}
-          onChangeText={(text) => setLocation(text)}
-        />
-        <Button title="Add Incident" onPress={handleAddIncident} />
-      </View>
-
-      <FlatList
-        data={incidentList}
-        renderItem={({ item }) => (
-          <View style={styles.tweetContainer}>
-            <Text style={styles.username}>{item.username}</Text>
-            <Text>Description: {item.description}</Text>
-            <Text>Location: {item.location}</Text>
-          </View>
-        )}
-        keyExtractor={(item) => item.id}
-      />
-    </SafeAreaView>
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-    paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  inputContainer: {
-    marginBottom: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 8,
-    paddingHorizontal: 8,
-  },
-  tweetContainer: {
-    backgroundColor: 'white',
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  username: {
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-});
 
 export default App;
