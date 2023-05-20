@@ -1,56 +1,94 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, FlatList, SafeAreaView } from 'react-native';
 
-const IncidentForm = () => {
+const App = () => {
+  const [incidentList, setIncidentList] = useState([]);
+  const [username, setUsername] = useState('');
+  const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
-  const [details, setDetails] = useState('');
 
-  const handleLocationChange = (text) => {
-    setLocation(text);
-  };
+  const handleAddIncident = () => {
+    if (username && description && location) {
+      const newIncident = {
+        id: Math.random().toString(),
+        username: username,
+        description: description,
+        location: location,
+      };
 
-  const handleDetailsChange = (text) => {
-    setDetails(text);
-  };
-
-  const handleSubmit = () => {
-    console.log('Location:', location);
-    console.log('Details:', details);
+      setIncidentList((prevList) => [...prevList, newIncident]);
+      setUsername('');
+      setDescription('');
+      setLocation('');
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Incident Location"
-        value={location}
-        onChangeText={handleLocationChange}
+    <SafeAreaView style={styles.container}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={username}
+          onChangeText={(text) => setUsername(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Description"
+          value={description}
+          onChangeText={(text) => setDescription(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Location"
+          value={location}
+          onChangeText={(text) => setLocation(text)}
+        />
+        <Button title="Add Incident" onPress={handleAddIncident} />
+      </View>
+
+      <FlatList
+        data={incidentList}
+        renderItem={({ item }) => (
+          <View style={styles.tweetContainer}>
+            <Text style={styles.username}>{item.username}</Text>
+            <Text>Description: {item.description}</Text>
+            <Text>Location: {item.location}</Text>
+          </View>
+        )}
+        keyExtractor={(item) => item.id}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Incident Details"
-        value={details}
-        onChangeText={handleDetailsChange}
-        multiline
-      />
-      <Button title="Submit" onPress={handleSubmit} />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  inputContainer: {
+    marginBottom: 16,
   },
   input: {
-    width: '80%',
-    marginBottom: 10,
-    padding: 10,
-    borderWidth: 1,
+    height: 40,
     borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 8,
+    paddingHorizontal: 8,
+  },
+  tweetContainer: {
+    backgroundColor: 'white',
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 16,
+  },
+  username: {
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
 });
 
-export default IncidentForm;
+export default App;
