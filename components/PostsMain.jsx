@@ -7,7 +7,7 @@ export default PostsMain = ({ title, description, image}) => {
                 <Image style={styles.image} source={require('../assets/alertRecent.png')} />
 
                 <View style={styles.alertContainer}>
-                    <Text style={styles.alertTitle}>Incident on Hutchinson</Text>
+                    <Text style={styles.alertTitle}>Location: Drake Dr.</Text>
                     <Text style={styles.alertInfo}>An incident has been reported on Hutchinson Drive in Davis, California. Reports of Mutiple Authorities and an Arrest.</Text>
                 </View>
             </View>

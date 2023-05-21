@@ -32,7 +32,7 @@ export default Welcome = ({ text, date }) => {
                 </View>
             </View>
 
-            <HeaderTitle text={"Most Recent Post"} date={"May 22"}/>
+            <HeaderTitle text={"Most Recent Post"} date={"May 21"}/>
             <PostsMain image={assetsObject.alert} title={"Incident on Hutchinson"} description={"An incident has been reported on Hutchinson Drive in Davis, California. Reports of Mutiple Authorities and an Arrest."} />
         </View>
     )

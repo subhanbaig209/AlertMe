@@ -36,8 +36,8 @@ const Feed = () => {
         <Search />
         <Categories/>
         <HeaderTitle text={"Posts"} date={"May 18 - May 22"}/>
-        <Post image={assetsObject.biohazard} title={"COVID-19 Outbreak?"} description={"BRAINS...."}/>
-        <Post image={assetsObject.alert} title={"UCD Lab Leak"} description={"UCD Bioengineering Lab has reported a leak in one of their facilities. Clean up crews on standby."}/>
+        <Post image={assetsObject.biohazard} title={"COVID-19 Outbreak?"} description={"Location: Bioletti Way"}/>
+        <Post image={assetsObject.alert} title={"UCD Lab Leak"} description={"Location: Health Sciences Dr."}/>
       </ScrollView> 
     );
   };
