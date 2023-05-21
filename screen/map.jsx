@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     marginRight: 10,
-    padding: 8,
+    padding: 20,
     borderRadius: 8,
     backgroundColor: '#f0f0f0',
   },
