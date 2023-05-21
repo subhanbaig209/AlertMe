@@ -1,6 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { useFonts } from 'expo-font';
+import HeaderTitle from "./HeaderTitle"
+import assetsObject from "./assets"
+import PostsMain from "./PostsMain";
+import SmallButton from "./SmallButton"
 
 export default Welcome = ({ text, date }) => {
     const [fontsLoaded] = useFonts({
@@ -24,25 +28,12 @@ export default Welcome = ({ text, date }) => {
                         </View>
                     </View>
   
-                    <TouchableOpacity style={styles.settingsButton}>
-                        <Image style={styles.settings} source={require('../assets/settings.png')} />
-                    </TouchableOpacity>
+                    <SmallButton image={assetsObject.settings} style={styles.settings} />
                 </View>
             </View>
 
-            <View style={styles.recentAlert}>
-                <Text style={styles.alerts}>Most Recent Post</Text>
-                <Text style={styles.alertDate}>{date}</Text>
-            </View>
-
-            <View style={styles.background}>
-                <Image style={styles.alert} source={require('../assets/alertRecent.png')} />
-
-                <View style={styles.alertText}>
-                    <Text style={styles.alertTitle}>Incident on Hutchinson</Text>
-                    <Text style={styles.alertInfo}>An incident has been reported on Hutchinson Drive in Davis, California. Reports of Mutiple Authorities and an Arrest.</Text>
-                </View>
-            </View>
+            <HeaderTitle text={"Most Recent Post"} date={"May 22"}/>
+            <PostsMain image={assetsObject.alert} title={"Incident on Hutchinson"} description={"An incident has been reported on Hutchinson Drive in Davis, California. Reports of Mutiple Authorities and an Arrest."} />
         </View>
     )
 }
@@ -101,17 +92,6 @@ const styles = StyleSheet.create({
         height: 20
     },
 
-    settingsButton: {
-        marginRight: 20,
-        marginTop: 40,
-        width: 40,
-        height: 40,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#d6d6d6",
-        borderRadius: 10
-    },
 
     nav: {
         display: "flex",

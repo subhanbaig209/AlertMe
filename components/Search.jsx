@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { SearchBar } from "react-native-elements";
 import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
+import SmallButton from "./SmallButton";
+import assetsObject from "./assets";
 
 export default Search = () => {
     let [search, setSearch] = useState("")
@@ -11,11 +13,8 @@ export default Search = () => {
 
     return(
         <View style={styles.searchContainer}>
-            <SearchBar containerStyle={{backgroundColor: "transparent",  borderBottomColor: 'transparent',
-            borderTopColor: 'transparent'
-        }} inputContainerStyle={{backgroundColor: "#e7e7e7", borderRadius: 10, width: 270}}
-        value={search} onChangeText={updateSearch}/>
-
+            <SearchBar containerStyle={styles.searchBorder} inputContainerStyle={styles.searchInput}
+                                        value={search} onChangeText={updateSearch}/>
             <TouchableOpacity style={styles.settingsButton}>
                 <Image style={styles.settings} source={require('../assets/filter.png')} />
             </TouchableOpacity>
@@ -25,6 +24,17 @@ export default Search = () => {
 }
 
 const styles = new StyleSheet.create({
+    searchInput: {
+        backgroundColor: "#e7e7e7", 
+        borderRadius: 10, width: 270
+    },
+
+    searchBorder: {
+        backgroundColor: "transparent", 
+        borderBottomColor: 'transparent',
+        borderTopColor: 'transparent'
+    },
+
     searchContainer: {
         display: "flex",
         justifyContent: "space-between",

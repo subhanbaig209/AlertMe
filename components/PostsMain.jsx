@@ -1,35 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 
-export default Post = ({ image, title, description}) => {
+export default PostsMain = ({ title, description, image}) => {
     return(
         <View style={styles.background}>
-            <Image style={styles.image} source={image} />
+                <Image style={styles.image} source={require('../assets/alertRecent.png')} />
 
-            <View style={styles.alertContainer}>
-                <Text style={styles.alertTitle}>{title}</Text>
-                <Text style={styles.alertInfo}>{description}</Text>
+                <View style={styles.alertContainer}>
+                    <Text style={styles.alertTitle}>Incident on Hutchinson</Text>
+                    <Text style={styles.alertInfo}>An incident has been reported on Hutchinson Drive in Davis, California. Reports of Mutiple Authorities and an Arrest.</Text>
+                </View>
             </View>
-        </View>
     )
 }
 
 const styles = StyleSheet.create({
     background: {
         margin: 20,
-        height: 100,
+        height: 150,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "row",
         borderRadius: 20,
-        backgroundColor: "#191559",
-    },
-
-    image: {
-        marginLeft: 20,
-        width: 50,
-        height: 50
+        backgroundColor: "#000579",
     },
 
     alertTitle: {
@@ -41,17 +35,18 @@ const styles = StyleSheet.create({
     alertInfo: {
         color: "white",
         fontFamily: "Century",
-        width: 197,
+        width: 190,
         fontSize: 10,
     },
 
     alertContainer: {
-        marginLeft: 20
+        marginLeft: 20,
     },
 
-    alertDate: {
-        fontFamily: "Century",
-        color: "gray",
-        marginRight: 20
-    }
+    image: {
+        marginLeft: 20,
+        width: 80,
+        height: 80
+    },
+
 });

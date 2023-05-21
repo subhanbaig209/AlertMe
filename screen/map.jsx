@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   calloutContainer: {
+    boxRadius: 5,
     paddingHorizontal: 0,
     paddingVertical: 0,
     backgroundColor: 'white',

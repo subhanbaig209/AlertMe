@@ -5,28 +5,28 @@ import { useFonts } from 'expo-font';
 export default HeaderTitle = ({ text, date }) => {
 
 return(
-    <View style={styles.recentAlert}>
-                <Text style={styles.alertTitle}>{text}</Text>
-                <Text style={styles.alertDate}>{date}</Text>
+    <View style={styles.titleContainer}>
+                <Text style={styles.title}>{text}</Text>
+                <Text style={styles.date}>{date}</Text>
     </View>
     )
 }
 
 
 const styles = StyleSheet.create({
-    alertTitle: {
+    title: {
         fontFamily: "GilroyBold",
         fontSize: 20,
-        marginBottom: 15,
+        marginBottom: 10,
         marginTop:15,
         marginLeft: 10,
     },
-    alertDate: {
+    date: {
         fontFamily: "Century",
         color: "gray",
         marginRight: 20
     },
-    recentAlert: {
+    titleContainer: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",

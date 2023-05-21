@@ -6,6 +6,7 @@ import Category from '../components/Category';
 import Categories from '../components/Categories';
 import Post from '../components/Post';
 import HeaderTitle from '../components/HeaderTitle';
+import assetsObject from '../components/assets';
 
 const Feed = () => {
     const [incidentList, setIncidentList] = useState([]);
@@ -35,8 +36,8 @@ const Feed = () => {
         <Search />
         <Categories/>
         <HeaderTitle text={"Posts"} date={"May 18 - May 22"}/>
-        <Post image={"../assets/biohazard.png"} title={"COVID-19 Outbreak?"} description={"BRAINS...."}/>
-        <Post image={"../assets/biohazard.png"} title={"UCD Lab Leak"} description={"UCD Bioengineering Lab has reported a leak in one of their facilities. Clean up crews on standby."}/>
+        <Post image={assetsObject.biohazard} title={"COVID-19 Outbreak?"} description={"BRAINS...."}/>
+        <Post image={assetsObject.alert} title={"UCD Lab Leak"} description={"UCD Bioengineering Lab has reported a leak in one of their facilities. Clean up crews on standby."}/>
 
         {/* <View style={styles.inputContainer}>
           <TextInput
