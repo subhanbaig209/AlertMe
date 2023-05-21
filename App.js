@@ -15,6 +15,7 @@ const App = () => {
           name="Feed"
           component={Feed}
           options={{
+            headerShown : false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),
@@ -24,6 +25,7 @@ const App = () => {
           name="Map"
           component={Map}
           options={{
+            headerShown : false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="map" color={color} size={size} />
             ),

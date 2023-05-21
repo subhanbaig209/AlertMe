@@ -78,64 +78,64 @@ export default function Map() {
     setIncidentText(text);
   };
 
- return (
-  <KeyboardAvoidingView
-    style={styles.container}
-    behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-    keyboardVerticalOffset={keyboardVerticalOffset}
-  >
-    <View style={styles.container}>
-      {currentLocation && (
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: currentLocation.latitude,
-            longitude: currentLocation.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          showsUserLocation={true}
-          onPress={handleMapPress}
-        >
-          {pinnedLocations.map((location, index) => (
-            <Marker key={index} coordinate={location}>
-              <Entypo name="location-pin" size={24} color="red" />
-            </Marker>
-          ))}
-          {pinLocation && <Marker coordinate={pinLocation} />}
-        </MapView>
-      )}
-      {addingPin && (
-        <View style={styles.pinContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Enter incident"
-            value={incidentText}
-            onChangeText={handleIncidentTextChange}
-          />
-          <TouchableOpacity
-            style={styles.confirmButton}
-            onPress={handleConfirmPin}
-            disabled={!incidentText.trim()}
-          >
-            <Entypo name="check" size={24} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.cancelButton} onPress={handleCancelPin}>
-            <Entypo name="cross" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-      )}
-      {!addingPin && (
-        <TouchableOpacity style={styles.addButton} onPress={handleAddPin}>
-          <ReportHazard />
-        </TouchableOpacity>
-      )}
-    </View>
-  </KeyboardAvoidingView>
-);
-      }
-  
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={keyboardVerticalOffset}
+    >
+      <View style={styles.container}>
+        {currentLocation && (
+          <MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: currentLocation.latitude,
+              longitude: currentLocation.longitude,
+              latitudeDelta: 0.005, // Adjust the value for closer zoom
+              longitudeDelta: 0.005, // Adjust the value for closer zoom
+            }}
+            showsUserLocation={true}
+            // followsUserLocation={true}
 
+            onPress={handleMapPress}
+          >
+            {pinnedLocations.map((location, index) => (
+              <Marker key={index} coordinate={location}>
+                <Entypo name="location-pin" size={36} color="red" />
+              </Marker>
+            ))}
+            {pinLocation && <Marker coordinate={pinLocation} />}
+          </MapView>
+        )}
+        {addingPin && (
+          <View style={styles.pinContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter incident"
+              value={incidentText}
+              onChangeText={handleIncidentTextChange}
+            />
+            <TouchableOpacity
+              style={styles.confirmButton}
+              onPress={handleConfirmPin}
+              disabled={!incidentText.trim()}
+            >
+              <Entypo name="check" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.cancelButton} onPress={handleCancelPin}>
+              <Entypo name="cross" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+        )}
+        {!addingPin && (
+          <TouchableOpacity style={styles.addButton} onPress={handleAddPin}>
+            <ReportHazard />
+          </TouchableOpacity>
+        )}
+      </View>
+    </KeyboardAvoidingView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -169,8 +169,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 10,
   },
-  
-  
   textInput: {
     flex: 1,
     marginRight: 10,
