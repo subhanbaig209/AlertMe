@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, FlatList, SafeAreaView } from 'react-native';
+import ReportHazard from '../components/ReportHazard';
+
 
 const Feed = () => {
     const [incidentList, setIncidentList] = useState([]);
@@ -25,7 +27,8 @@ const Feed = () => {
   
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.inputContainer}>
+        <ReportHazard />
+        {/* <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             placeholder="Username"
@@ -45,7 +48,7 @@ const Feed = () => {
             onChangeText={(text) => setLocation(text)}
           />
           <Button title="Add Incident" onPress={handleAddIncident} />
-        </View>
+        </View> */}
   
         <FlatList
           data={incidentList}
