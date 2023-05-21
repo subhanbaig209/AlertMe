@@ -120,7 +120,7 @@ export default function Map() {
                 <Callout style={styles.calloutContainer}>
                   <View style={styles.calloutTextContainer}>
                     <Text style={styles.calloutText}>Incident: {location.incidentText}</Text>
-                    <Text style={styles.calloutText}>Street: {location.streetName}</Text>
+                    <Text style={styles.calloutText}>Location: {location.streetName}</Text>
                    
                     <View style={styles.calloutIconsContainer}>
                       <TouchableOpacity>
@@ -141,7 +141,7 @@ export default function Map() {
           <View style={styles.pinContainer}>
             <TextInput
               style={styles.textInput}
-              placeholder="Enter Incident"
+              placeholder="Pin a Location & Enter Incident"
               value={incidentText}
               onChangeText={handleIncidentTextChange}
             />
@@ -213,11 +213,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   calloutTextContainer: {
-    padding: 8,
+    padding: 3,
   },
   calloutContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
     backgroundColor: 'white',
     minWidth: 200,
   },
