@@ -116,7 +116,7 @@ export default function Map() {
           >
             {pinnedLocations.map((location, index) => (
               <Marker key={index} coordinate={location}>
-                <Entypo name="location-pin" size={36} color="red" />
+                <Entypo name="location-pin" size={40} color="red" />
                 <Callout style={styles.calloutContainer}>
                   <View style={styles.calloutTextContainer}>
                     <Text style={styles.calloutText}>Incident: {location.incidentText}</Text>
