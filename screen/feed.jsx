@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, FlatList, SafeAreaView } from 'react-native';
-import ReportHazard from '../components/ReportHazard';
-
+import { View, Text, StyleSheet, TextInput, Button, FlatList, SafeAreaView, ScrollView } from 'react-native';
+import Welcome from '../components/Welcome';
+import Search from '../components/Search';
+import Category from '../components/Category';
+import Categories from '../components/Categories';
+import Post from '../components/Post';
+import HeaderTitle from '../components/HeaderTitle';
 
 const Feed = () => {
     const [incidentList, setIncidentList] = useState([]);
@@ -26,8 +30,15 @@ const Feed = () => {
     };
   
     return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.inputContainer}>
+      <ScrollView style={styles.container}>
+        <Welcome text={"Hashim"} date={"May 22"}/>
+        <Search />
+        <Categories/>
+        <HeaderTitle text={"Posts"} date={"May 18 - May 22"}/>
+        <Post image={"../assets/biohazard.png"} title={"COVID-19 Outbreak?"} description={"BRAINS...."}/>
+        <Post image={"../assets/biohazard.png"} title={"UCD Lab Leak"} description={"UCD Bioengineering Lab has reported a leak in one of their facilities. Clean up crews on standby."}/>
+
+        {/* <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             placeholder="Username"
@@ -59,17 +70,15 @@ const Feed = () => {
             </View>
           )}
           keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
+        />*/}
+      </ScrollView> 
     );
   };
   
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
       backgroundColor: '#f5f5f5',
-      paddingHorizontal: 16,
-      paddingTop: 16,
+      width: "100%"
     },
     inputContainer: {
       marginBottom: 16,

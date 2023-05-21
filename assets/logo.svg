@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 440 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-594.953,-969.94)">
+        <g transform="matrix(1.84048,0,0,1.84048,-919.738,-632.126)">
+            <path d="M926.24,883.368C926.24,876.244 933.234,870.461 941.85,870.461C950.466,870.461 957.46,876.244 957.46,883.368L957.46,905.981C957.46,908.508 966.197,913.562 966.197,913.562L918.448,913.562C918.448,913.562 926.24,908.508 926.24,905.981L926.24,883.368Z" style="fill:white;"/>
+        </g>
+        <g transform="matrix(2.86855,0,0,2.86855,-1880.9,-1576.22)">
+            <circle cx="939.67" cy="922.031" r="2.652" style="fill:white;"/>
+        </g>
+        <g transform="matrix(1.84048,0,0,1.84048,-1106.55,-590.406)">
+            <g transform="matrix(33.3333,0,0,33.3333,1163.83,941.437)">
+            </g>
+            <text x="921.394px" y="941.437px" style="font-family:'Verdana-Bold', 'Verdana', sans-serif;font-weight:700;font-size:33.333px;fill:white;">FIRST ALERT</text>
+        </g>
+    </g>
+</svg>
