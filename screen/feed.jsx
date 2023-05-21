@@ -27,8 +27,7 @@ const Feed = () => {
   
     return (
       <SafeAreaView style={styles.container}>
-        <ReportHazard />
-        {/* <View style={styles.inputContainer}>
+        <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             placeholder="Username"
@@ -48,7 +47,7 @@ const Feed = () => {
             onChangeText={(text) => setLocation(text)}
           />
           <Button title="Add Incident" onPress={handleAddIncident} />
-        </View> */}
+        </View>
   
         <FlatList
           data={incidentList}

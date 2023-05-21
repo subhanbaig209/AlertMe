@@ -11,9 +11,7 @@ export default ReportHazard = (props) => {
     }
 
     return(
-        <TouchableOpacity style={styles.container} onClick={this.onClick}>
-            <Image style={styles.hazard} source={require('../assets/hazard.png')} />
-        </TouchableOpacity>
+        <Image style={styles.hazard} source={require('../assets/hazard.png')} />
     )
 }
 

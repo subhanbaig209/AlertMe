@@ -4,7 +4,7 @@ import { StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 import * as Location from 'expo-location';
 import { Entypo } from '@expo/vector-icons';
 import { KeyboardAvoidingView, Platform } from 'react-native';
-
+import ReportHazard from '../components/ReportHazard';
 
 export default function Map() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -127,7 +127,7 @@ export default function Map() {
       )}
       {!addingPin && (
         <TouchableOpacity style={styles.addButton} onPress={handleAddPin}>
-          <Entypo name="location-pin" size={24} color="black" />
+          <ReportHazard />
         </TouchableOpacity>
       )}
     </View>
@@ -146,12 +146,17 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   addButton: {
+    width: 60,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#022442',
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
     position: 'absolute',
     bottom: 20,
     right: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 10,
   },
   pinContainer: {
     position: 'absolute',
