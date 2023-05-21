@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import MapView, { Marker, Callout } from 'react-native-maps';
-import { StyleSheet, View, TouchableOpacity, TextInput, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, TextInput, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import * as Location from 'expo-location';
-
 import { Entypo, FontAwesome } from '@expo/vector-icons';
-import { KeyboardAvoidingView, Platform } from 'react-native';
 import ReportHazard from '../components/ReportHazard';
-import Feed from './feed';
 
 export default function Map() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -15,8 +12,6 @@ export default function Map() {
   const [pinnedLocations, setPinnedLocations] = useState([]);
   const [incidentText, setIncidentText] = useState('');
   const [streetName, setStreetName] = useState('');
-
-  const keyboardVerticalOffset = Platform.OS === 'ios' ? 100 : 0; // Adjust the value as needed
 
   useEffect(() => {
     (async () => {
@@ -95,6 +90,8 @@ export default function Map() {
     setIncidentText(text);
   };
 
+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 0 : -500; // Adjust the value as needed
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -121,7 +118,6 @@ export default function Map() {
                   <View style={styles.calloutTextContainer}>
                     <Text style={styles.calloutText}>Incident: {location.incidentText}</Text>
                     <Text style={styles.calloutText}>Location: {location.streetName}</Text>
-                   
                     <View style={styles.calloutIconsContainer}>
                       <TouchableOpacity>
                         <FontAwesome name="thumbs-up" size={24} color="green" />
