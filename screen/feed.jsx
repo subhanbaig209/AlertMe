@@ -38,40 +38,6 @@ const Feed = () => {
         <HeaderTitle text={"Posts"} date={"May 18 - May 22"}/>
         <Post image={assetsObject.biohazard} title={"COVID-19 Outbreak?"} description={"BRAINS...."}/>
         <Post image={assetsObject.alert} title={"UCD Lab Leak"} description={"UCD Bioengineering Lab has reported a leak in one of their facilities. Clean up crews on standby."}/>
-
-        {/* <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            value={username}
-            onChangeText={(text) => setUsername(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Description"
-            value={description}
-            onChangeText={(text) => setDescription(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Location"
-            value={location}
-            onChangeText={(text) => setLocation(text)}
-          />
-          <Button title="Add Incident" onPress={handleAddIncident} />
-        </View>
-  
-        <FlatList
-          data={incidentList}
-          renderItem={({ item }) => (
-            <View style={styles.tweetContainer}>
-              <Text style={styles.username}>{item.username}</Text>
-              <Text>Description: {item.description}</Text>
-              <Text>Location: {item.location}</Text>
-            </View>
-          )}
-          keyExtractor={(item) => item.id}
-        />*/}
       </ScrollView> 
     );
   };
