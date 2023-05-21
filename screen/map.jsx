@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
+import MapView, { Marker, Callout } from 'react-native-maps';
+import { StyleSheet, View, TouchableOpacity, TextInput, Text } from 'react-native';
 import * as Location from 'expo-location';
-import { Entypo } from '@expo/vector-icons';
+
+import { Entypo, FontAwesome } from '@expo/vector-icons';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import ReportHazard from '../components/ReportHazard';
+import Feed from './feed';
 
 export default function Map() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -12,6 +14,7 @@ export default function Map() {
   const [addingPin, setAddingPin] = useState(false);
   const [pinnedLocations, setPinnedLocations] = useState([]);
   const [incidentText, setIncidentText] = useState('');
+  const [streetName, setStreetName] = useState('');
 
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 100 : 0; // Adjust the value as needed
 
@@ -51,10 +54,10 @@ export default function Map() {
 
   const handleConfirmPin = () => {
     if (pinLocation && incidentText.trim() !== '') {
-      // Handle the confirmed pin location and incident text, e.g., save it to a database
       console.log('Pin location:', pinLocation);
       console.log('Incident:', incidentText);
-      setPinnedLocations([...pinnedLocations, pinLocation]);
+      console.log('street name', streetName);
+      setPinnedLocations([...pinnedLocations, { ...pinLocation, incidentText, streetName }]);
     }
     setPinLocation(null);
     setIncidentText('');
@@ -67,10 +70,24 @@ export default function Map() {
     setAddingPin(false);
   };
 
-  const handleMapPress = (event) => {
+  const handleMapPress = async (event) => {
     if (addingPin) {
       const { latitude, longitude } = event.nativeEvent.coordinate;
       setPinLocation({ latitude, longitude });
+
+      try {
+        const address = await Location.reverseGeocodeAsync({ latitude, longitude });
+        if (address.length > 0) {
+          const { street } = address[0];
+          setStreetName(street);
+        }
+      } catch (error) {
+        console.log('Error getting street name:', error);
+      }
+    } else {
+      setPinLocation(null);
+      setIncidentText('');
+      setStreetName('');
     }
   };
 
@@ -91,17 +108,30 @@ export default function Map() {
             initialRegion={{
               latitude: currentLocation.latitude,
               longitude: currentLocation.longitude,
-              latitudeDelta: 0.005, // Adjust the value for closer zoom
-              longitudeDelta: 0.005, // Adjust the value for closer zoom
+              latitudeDelta: 0.005,
+              longitudeDelta: 0.005,
             }}
             showsUserLocation={true}
-            // followsUserLocation={true}
-
             onPress={handleMapPress}
           >
             {pinnedLocations.map((location, index) => (
               <Marker key={index} coordinate={location}>
                 <Entypo name="location-pin" size={36} color="red" />
+                <Callout style={styles.calloutContainer}>
+                  <View style={styles.calloutTextContainer}>
+                    <Text style={styles.calloutText}>Incident: {location.incidentText}</Text>
+                    <Text style={styles.calloutText}>Street: {location.streetName}</Text>
+                   
+                    <View style={styles.calloutIconsContainer}>
+                      <TouchableOpacity>
+                        <FontAwesome name="thumbs-up" size={24} color="green" />
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                        <FontAwesome name="thumbs-down" size={24} color="red" />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </Callout>
               </Marker>
             ))}
             {pinLocation && <Marker coordinate={pinLocation} />}
@@ -111,7 +141,7 @@ export default function Map() {
           <View style={styles.pinContainer}>
             <TextInput
               style={styles.textInput}
-              placeholder="Enter incident"
+              placeholder="Enter Incident"
               value={incidentText}
               onChangeText={handleIncidentTextChange}
             />
@@ -181,5 +211,22 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     marginLeft: 10,
+  },
+  calloutTextContainer: {
+    padding: 8,
+  },
+  calloutContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: 'white',
+    minWidth: 200,
+  },
+  calloutText: {
+    fontSize: 14,
+  },
+  calloutIconsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
   },
 });
