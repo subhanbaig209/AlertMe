@@ -1,4 +1,4 @@
-# AlertMe
+HackDavis2023 - AlertMe
 
 Inspiration
 The inspiration came from the recent stabbing situation, where students were not notified until they checked their social media. Though 911 had been called minutes after the stabbings, no alerts showed up on PulsePoint or Twitter until hours later. This, on top of other incidents, made us realize the importance of having access to real-time information in such situations. With AlertMe, users are able to view or notify incidents to ensure that everyone is always aware of any potential safety threats nearby.
